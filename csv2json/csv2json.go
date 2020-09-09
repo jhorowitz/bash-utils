@@ -42,16 +42,13 @@ func main() {
 			continue
 		}
 		if len(headers) != len(row) {
-			logrus.WithField("headers", len(headers)).WithField("row", len(row)).WithField("idx", idx).Fatal("header/row count mismatch ")
+			logrus.WithField("headers", len(headers)).WithField("row", len(row)).WithField("idx", idx).Fatal("header/row count mismatch")
 		}
 		m := make(map[string]string)
 		for i := range headers {
 			m[headers[i]] = row[i]
 		}
 
-		if *asArray {
-
-		}
 		b, err := json.Marshal(m)
 		if err != nil {
 			logrus.WithError(err).Fatal("failed to marshal json")
